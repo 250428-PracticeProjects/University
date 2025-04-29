@@ -18,7 +18,8 @@ import jakarta.persistence.Table;
  * Fields:
  * - enrollmentId: The unique identifier for the enrollment.
  * - student: The student enrolled in the course (mapped to the User entity).
- * - course: The course the student is enrolled in (mapped to the Course entity).
+ * - course: The course the student is enrolled in (mapped to the Course
+ * entity).
  * - enrollmentDate: The date and time when the enrollment occurred.
  * - grade: The grade the student received for the course (optional).
  * 
@@ -27,17 +28,18 @@ import jakarta.persistence.Table;
  * - @Table: Specifies the table name as "enrollment".
  * - @Id: Marks the primary key field.
  * - @GeneratedValue: Specifies that the primary key is auto-generated.
- * - @ManyToOne: Defines many-to-one relationships with the User and Course entities.
+ * - @ManyToOne: Defines many-to-one relationships with the User and Course
+ * entities.
  * - @JoinColumn: Specifies the foreign key columns as "userId" and "courseId".
  */
 @Entity
-@Table(name="enrollment")
+@Table(name = "enrollment")
 public class Enrollment {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int enrollmentId;
-    
+
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
     private User student;
@@ -59,6 +61,9 @@ public class Enrollment {
         this.course = course;
         this.enrollmentDate = enrollmentDate;
         this.grade = grade;
+    }
+
+    public Enrollment() {
     }
 
     // Getters and Setters
